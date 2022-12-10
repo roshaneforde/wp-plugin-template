@@ -1,17 +1,18 @@
-=== WordPress Plugin Template ===
-Contributors: roshane
-Tags: wordpress, plugin, template
-Requires at least: 3.9
-Tested up to: 6.0
-Stable tag: 1.0
-License: GPLv2 or later
+=== Plugin Name ===
+Contributors: (this should be a list of wordpress.org userid's)
+Donate link: http://example.com/
+Tags: comments, spam
+Requires at least: 3.0.1
+Tested up to: 6.1.1
+Stable tag: 4.3
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This is where you craft a short, punchy description of your plugin
+Here is a short description of the plugin. This should be no more than 150 characters. No markup here.
 
 == Description ==
 
-This is where you can give a much longer description of your plugin that you can use to explain just how it awesome it really is.
+This is where you can give a much longer description of your plugin.
 
 == Installation ==
 
