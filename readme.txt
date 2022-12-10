@@ -1,11 +1,10 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 6.1.1
-Stable tag: 4.3
-License: GPLv3 or later
+Contributors: Your Name
+Tags: plugin, wordpress
+Requires at least: 5.0
+Tested up to: 6.1
+Stable tag: 1.0
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Here is a short description of the plugin. This should be no more than 150 characters. No markup here.
@@ -33,6 +32,10 @@ Installing "WordPress Plugin Template" can be done either by searching for "Word
 = What is the plugin template for? =
 
 This plugin template is designed to help you get started with any new WordPress plugin.
+
+= Is this plugin compatible with older versions of WordPress? =
+
+This plugin has been tested and is compatible with WordPress 5.0 and higher. It may work with older versions of WordPress, but this has not been tested.
 
 == Changelog ==
 
