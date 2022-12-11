@@ -3,13 +3,15 @@
 /**
  * General functions for your plugin with a few already written for you.
  * 
- * Exit if accessed directly.
+ * @package WP Plugin Template
+ * @since 1.0.0
  */
-
-defined( 'ABSPATH' ) || exit;
 
 /**
  * Retrieve the version number of the plugin.
+ * 
+ * @since 1.0.0
+ * @return string
  */
 function wp_plugin_template_get_version()
 {
@@ -17,7 +19,10 @@ function wp_plugin_template_get_version()
 }
 
 /**
- * Default avatar path.
+ * Path for default avatar image.
+ * 
+ * @since 1.0.0
+ * @return string
  */
 function wp_plugin_template_default_avatar_image()
 {
@@ -26,6 +31,9 @@ function wp_plugin_template_default_avatar_image()
 
 /**
  * Add default url protocol if it's not present.
+ * 
+ * @since 1.0.0
+ * @param string $url
  */
 function wp_plugin_template_full_link_url( $url )
 {
@@ -38,6 +46,9 @@ function wp_plugin_template_full_link_url( $url )
 
 /**
  * Show theme's 404 page.
+ * 
+ * @since 1.0.0
+ * @return void
  */
 function wp_plugin_template_show_404()
 {
@@ -55,7 +66,10 @@ function wp_plugin_template_show_404()
 }
 
 /**
- * Get wordpress pages
+ * Get wordpress pages.
+ * 
+ * @since 1.0.0
+ * @param array $args
  */
 function wp_plugin_template_get_pages( $args )
 {

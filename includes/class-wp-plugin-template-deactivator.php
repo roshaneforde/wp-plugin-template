@@ -5,15 +5,15 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  * 
- * Exit if accessed directly.
+ * @since 1.0.0
  */
-
-defined( 'ABSPATH' ) || exit;
 
 class WP_Plugin_Template_Deactivator
 {
 	/**
 	 * Description.
+	 * 
+	 * @since 1.0.0
 	 */
 	public static function deactivate()
 	{

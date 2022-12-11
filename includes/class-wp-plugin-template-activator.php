@@ -5,15 +5,15 @@
  * 
  * This class defines all code necessary to run during the plugin's activation.
  *
- * Exit if accessed directly.
+ * @since 1.0.0
  */
-
-defined( 'ABSPATH' ) || exit;
 
 class WP_Plugin_Template_Activator
 {
 	/**
 	 * Description.
+	 * 
+	 * @since 1.0.0
 	 */
 	public static function activate()
 	{

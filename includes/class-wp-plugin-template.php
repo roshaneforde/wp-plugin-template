@@ -9,20 +9,24 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  * 
- * Exit if accessed directly.
+ * @since 1.0.0
  */
-
-defined( 'ABSPATH' ) || exit;
 
 class WP_Plugin_Template 
 {
 	/**
 	 * The unique identifier of this plugin.
+	 * 
+	 * @since 1.0.0
+	 * @var string
 	 */
 	protected $plugin_name;
 
 	/**
 	 * List of classes that the plugin depends on.
+	 * 
+	 * @since 1.0.0
+	 * @var array
 	 */
 	public $services =  array(
 		// Translations::class,
@@ -30,6 +34,12 @@ class WP_Plugin_Template
 
 	/**
 	 * Register and activate services.
+	 * 
+	 * Set the plugin name that can be used throughout the plugin.
+	 * Load the dependencies, define the locale, and set the hooks for the admin area and
+	 * the public-facing side of the site.
+	 * 
+	 * @since 1.0.0
 	 */
 	public function __construct()
 	{
@@ -48,6 +58,8 @@ class WP_Plugin_Template
 
 	/**
 	 * Stylesheets for the frontend.
+	 * 
+	 * @since 1.0.0
 	 */
 	public function styles()
 	{
@@ -62,6 +74,8 @@ class WP_Plugin_Template
 
 	/**
 	 * JavaScript for the frontend.
+	 * 
+	 * @since 1.0.0
 	 */
 	public function scripts()
 	{
@@ -76,6 +90,8 @@ class WP_Plugin_Template
 
 	/**
 	 * Stylesheets for the admin area.
+	 * 
+	 * @since 1.0.0
 	 */
 	public function admin_styles()
 	{
@@ -90,6 +106,8 @@ class WP_Plugin_Template
 
 	/**
 	 * JavaScript for the admin area.
+	 * 
+	 * @since 1.0.0
 	 */
 	public function admin_scripts()
 	{
