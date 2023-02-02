@@ -15,8 +15,10 @@ class WP_Clear
 	 */
 	public function __construct()
 	{
-		require_once wpclear_plugin_path() . 'config/class-enqueue.php';
+		require_once wpclear_plugin_path() . 'includes/config/class-enqueue.php';
+		require_once wpclear_plugin_path() . 'includes/custom-post-types/class-notes.php';
 
 		new Enqueue();
+		new Notes();
 	}
 }

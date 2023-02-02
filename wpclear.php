@@ -52,7 +52,7 @@ define( 'WPCLEAR_PATH', plugin_dir_path( __FILE__ ) );
  * This action is documented in includes/class-activator.php
  */
 function activate_wpclear() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/config/class-activator.php';
 	Activator::activate();
 }
 
@@ -61,7 +61,7 @@ function activate_wpclear() {
  * This action is documented in includes/class-deactivator.php
  */
 function deactivate_wpclear() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/config/class-deactivator.php';
 	Deactivator::deactivate();
 }
 
