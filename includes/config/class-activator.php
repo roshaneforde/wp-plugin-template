@@ -8,7 +8,7 @@
  * @since 1.0.0
  */
 
-class WP_Plugin_Template_Activator
+class Activator
 {
 	/**
 	 * Description.

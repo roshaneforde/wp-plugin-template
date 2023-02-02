@@ -3,9 +3,20 @@
 /**
  * General functions for your plugin with a few already written for you.
  * 
- * @package WP Plugin Template
+ * @package wpclear
  * @since 1.0.0
  */
+
+/**
+ * Retrieve the name of the plugin.
+ * 
+ * @since 1.0.0
+ * @return string
+ */
+function wpclear_plugin_name()
+{
+    return 'wpclear';
+}
 
 /**
  * Retrieve the version number of the plugin.
@@ -13,9 +24,31 @@
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_get_version()
+function wpclear_plugin_version()
 {
-    return WP_PLUGIN_TEMPLATE_VERSION;
+    return WPCLEAR_VERSION;
+}
+
+/**
+ * Retrieve the url of the plugin.
+ * 
+ * @since 1.0.0
+ * @return string
+ */
+function wpclear_plugin_url()
+{
+    return WPCLEAR_URL;
+}
+
+/**
+ * Retrieve the path of the plugin.
+ * 
+ * @since 1.0.0
+ * @return string
+ */
+function wpclear_plugin_path()
+{
+    return WPCLEAR_PATH;
 }
 
 /**
@@ -24,9 +57,9 @@ function wp_plugin_template_get_version()
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_default_avatar_image()
+function wpclear_default_avatar_image()
 {
-    return WP_PLUGIN_TEMPLATE_URL . 'img/default-avatar.png';
+    return WPCLEAR_URL . 'img/default-avatar.png';
 }
 
 /**
@@ -35,7 +68,7 @@ function wp_plugin_template_default_avatar_image()
  * @since 1.0.0
  * @param string $url
  */
-function wp_plugin_template_full_link_url( $url )
+function wpclear_full_link_url( $url )
 {
     if ( strpos( $url, 'http' ) === false || strpos( $url, 'https'  === false ) ) {
         $url = 'http://' .$url;
@@ -50,7 +83,7 @@ function wp_plugin_template_full_link_url( $url )
  * @since 1.0.0
  * @return void
  */
-function wp_plugin_template_show_404()
+function wpclear_show_404()
 {
     global $wp_query;
 
@@ -71,7 +104,7 @@ function wp_plugin_template_show_404()
  * @since 1.0.0
  * @param array $args
  */
-function wp_plugin_template_get_pages( $args )
+function wpclear_get_pages( $args )
 {
     $pages = array();
 
