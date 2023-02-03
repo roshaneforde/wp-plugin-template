@@ -7,9 +7,10 @@ I made this plugin template as a starting point for creating WordPress plugins. 
 * The Boilerplate is based on the [Plugin API](http://codex.wordpress.org/Plugin_API), [Coding Standards](http://codex.wordpress.org/WordPress_Coding_Standards), and [Documentation Standards](https://make.wordpress.org/core/handbook/best-practices/inline-documentation-standards/php/).
 * All classes, functions, and variables are documented so that you know what you need to change.
 * Full text of the GPLv2 license.
-* Custom post type `notes`.
-* Custom taxonomy `notes_category` for the `notes` the post type.
-* Gutenberg block for dislaying `notes`.
+* Organized folder structure for your plugin assets, custom post types, metaboxes, admin pages, and Gutenberg blocks.
+* Sample custom post type `notes`.
+* Sample custom taxonomy `notes_category` for the `notes` the post type.
+* Sample Gutenberg block for dislaying `notes`.
 
 ## Installation
 
