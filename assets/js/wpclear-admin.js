@@ -2,4 +2,4 @@
 
 wp.i18n.setLocaleData( { '': {} }, 'wpclear' );
 
-import '../../includes/blocks/note';
+import '../../includes/blocks/notes';

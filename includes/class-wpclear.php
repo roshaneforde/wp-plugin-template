@@ -19,7 +19,7 @@ class WP_Clear
 
 		require_once wpclear_plugin_path() . 'includes/config/class-enqueue.php';
 		require_once wpclear_plugin_path() . 'includes/custom-post-types/class-notes.php';
-		require_once wpclear_plugin_path() . 'includes/blocks/note/class-notes-block.php';
+		require_once wpclear_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
 
 		new Enqueue();
 		new Notes();

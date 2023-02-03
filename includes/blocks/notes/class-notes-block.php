@@ -60,7 +60,7 @@ class Notes_Block
         // Turn on output buffering
     	ob_start(); 
 
-        include( wpclear_plugin_path() . 'includes/blocks/note/notes.php' );
+        include( wpclear_plugin_path() . 'includes/blocks/notes/notes.php' );
     
         // Collect output
     	$output = ob_get_contents(); 
