@@ -15,10 +15,34 @@ class WP_Clear
 	 */
 	public function __construct()
 	{
+		add_filter( 'block_categories_all', array( $this, 'block_categories' ), 10, 2 );
+
 		require_once wpclear_plugin_path() . 'includes/config/class-enqueue.php';
 		require_once wpclear_plugin_path() . 'includes/custom-post-types/class-notes.php';
+		require_once wpclear_plugin_path() . 'includes/blocks/note/class-notes-block.php';
 
 		new Enqueue();
 		new Notes();
+		new Notes_Block();
+	}
+
+	/**
+	 * Register custom block categories.
+	 * 
+	 * @since 1.0.0
+	 */
+	public function block_categories( $categories ) 
+	{
+        $category_slugs = wp_list_pluck( $categories, 'slug' );
+        
+        return in_array( 'wpclear-blocks', $category_slugs, true ) ? $categories : array_merge(
+            $categories,
+            array(
+                array(
+                    'slug'  => 'wpclear-blocks',
+                    'title' => __( 'WP Clear' )
+                ),
+            )
+        );
 	}
 }

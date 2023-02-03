@@ -116,3 +116,49 @@ function wpclear_get_pages( $args )
     
     return $pages;
 }
+
+/**
+ * Get all notes.
+ * 
+ * @since 1.0.0
+ * @return array $notes_data
+ */
+function wpclear_all_notes()
+{
+    $notes = get_posts( array(
+        'posts_per_page'    => -1,
+        'post_type'         => 'note',
+        'order'         => 'DESC',
+    ) );
+
+    $notes_data = array();
+
+    foreach ( $notes as $note ) {
+        // Get notes details
+        $pinned = get_post_meta( $note->ID, 'pinned', true );
+
+        // Note categories
+        $notes_categories = array();
+
+        $categories = get_the_terms( $note->ID, 'notes_category' );
+            
+        if ( $categories && ! is_wp_error( $categories ) ) {
+            foreach ( $categories as $category ) {
+                $notes_categories[] = array(
+                    'name' => esc_html__( $category->name, 'conference' ),
+                    'slug' => $category->slug,
+                );
+            }
+        }
+
+        $notes_data[] = array( 
+            'id' => $note->ID,
+            'title' => $note->post_title,
+            'category' => $notes_categories,
+            'content' => $note->post_content,
+            'pinned' => $pinned,
+        );
+    }
+
+    return $notes_data;
+}

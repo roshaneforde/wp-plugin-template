@@ -82,9 +82,19 @@ class Enqueue
 		wp_enqueue_script( 
 			wpclear_plugin_name(),
 			wpclear_plugin_url() . 'assets/min/wpclear-admin.min.js',
-			array( 'jquery' ),
+			array( 'jquery', 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ),
 			wpclear_plugin_version(),
 			false
+		);
+
+		wp_localize_script(
+			wpclear_plugin_name(),
+			wpclear_plugin_name(),
+			array(
+				'nonce' => wp_create_nonce( 'wp_rest' ),
+				'locale' => get_locale(),
+				'notes' => wpclear_all_notes(),
+			)
 		);
 	}
 }
