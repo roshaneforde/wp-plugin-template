@@ -17,58 +17,32 @@ class Enqueue
      */
     public function __construct()
 	{
-		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 	}
 
-    /**
-	 * Stylesheets for the frontend.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function styles()
-	{
-		wp_enqueue_style(
-			wpclear_plugin_name(),
-			wpclear_plugin_url() . 'assets/min/wpclear.min.css',
-			array(),
-			wpclear_plugin_version(),
-			'all'
-		);
-	}
-
 	/**
-	 * JavaScript for the frontend.
+	 * Scripts for the frontend.
 	 * 
 	 * @since 1.0.0
 	 */
 	public function scripts()
 	{
-		wp_enqueue_script( 
-			wpclear_plugin_name(),
-			wpclear_plugin_url() . 'assets/min/wpclear.min.js',
-			array( 'jquery' ),
-			wpclear_plugin_version(),
-			false
-		);
-	}
-
-	/**
-	 * Stylesheets for the admin area.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function admin_styles()
-	{
 		wp_enqueue_style(
-			wpclear_plugin_name(),
-			wpclear_plugin_url() . 'assets/min/wpclear-admin.min.css',
+			wp_plugin_template_plugin_name(),
+			wp_plugin_template_plugin_url() . 'assets/min/frontend.min.css',
 			array(),
-			wpclear_plugin_version(),
+			wp_plugin_template_plugin_version(),
 			'all'
+		);
+
+		wp_enqueue_script( 
+			wp_plugin_template_plugin_name(),
+			wp_plugin_template_plugin_url() . 'assets/min/frontend.min.js',
+			array( 'jquery' ),
+			wp_plugin_template_plugin_version(),
+			false
 		);
 	}
 
@@ -79,21 +53,29 @@ class Enqueue
 	 */
 	public function admin_scripts()
 	{
+		wp_enqueue_style(
+			wp_plugin_template_plugin_name(),
+			wp_plugin_template_plugin_url() . 'assets/min/admin.min.css',
+			array(),
+			wp_plugin_template_plugin_version(),
+			'all'
+		);
+
 		wp_enqueue_script( 
-			wpclear_plugin_name(),
-			wpclear_plugin_url() . 'assets/min/wpclear-admin.min.js',
+			wp_plugin_template_plugin_name(),
+			wp_plugin_template_plugin_url() . 'assets/min/admin.min.js',
 			array( 'jquery', 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ),
-			wpclear_plugin_version(),
+			wp_plugin_template_plugin_version(),
 			false
 		);
 
 		wp_localize_script(
-			wpclear_plugin_name(),
-			wpclear_plugin_name(),
+			wp_plugin_template_plugin_name(),
+			'wp_plugin_template',
 			array(
 				'nonce' => wp_create_nonce( 'wp_rest' ),
 				'locale' => get_locale(),
-				'notes' => wpclear_all_notes(),
+				'notes' => wp_plugin_template_all_notes(),
 			)
 		);
 	}

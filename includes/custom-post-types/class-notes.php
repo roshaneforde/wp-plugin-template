@@ -12,35 +12,11 @@ class Notes
 {
     public function __construct()
     {   
-        add_action( 'admin_init', array( $this, 'menu_separator' ) );
-
         add_action( 'init', array( $this, 'register_custom_post_type' ) );
         add_action( 'init', array( $this, 'add_taxonomies' ), 0 );
 
         add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ), 1 );
         add_action( 'save_post', array( $this, 'save_meta' ), 1, 2 );
-    }
-
-    /**
-     * Add menu separator
-     * 
-     * @since 1.0.0
-     */
-    public function menu_separator()
-    {
-        global $menu;
-
-        $position = 26;
-
-        $menu[ $position ] = array(
-            0 => '',
-            1 => 'read',
-            2 => 'separator' . $position,
-            3 => '',
-            4 => 'wp-menu-separator'
-        );
-
-        ksort( $menu );
     }
 
     /**
@@ -51,20 +27,20 @@ class Notes
     public function register_custom_post_type()
     {
         $labels = array(
-            'name'                  => __( 'Notes', 'wpclear' ),
-            'singular_name'         => __( 'Note', 'wpclear' ),
-            'menu_name'             => __( 'Notes', 'wpclear' ),
-            'all_items'             => __( 'All Notes', 'wpclear' ),
-            'add_new_item'          => __( 'Add New Note', 'wpclear' ),
-            'add_new'               => __( 'Add Note', 'wpclear' ),
-            'new_item'              => __( 'New Note', 'wpclear' ),
-            'edit_item'             => __( 'Edit Note', 'wpclear' ),
-            'update_item'           => __( 'Update Note', 'wpclear' ),
-            'view_item'             => __( 'View Note', 'wpclear' ),
-            'view_items'            => __( 'View Notes', 'wpclear' ),
-            'search_items'          => __( 'Search Notes', 'wpclear' ),
-            'not_found'             => __( 'No Notes found', 'wpclear' ),
-            'not_found_in_trash'    => __( 'No Notes found in Trash', 'wpclear' ),
+            'name'                  => __( 'Notes', 'wp-plugin-template' ),
+            'singular_name'         => __( 'Note', 'wp-plugin-template' ),
+            'menu_name'             => __( 'Notes', 'wp-plugin-template' ),
+            'all_items'             => __( 'All Notes', 'wp-plugin-template' ),
+            'add_new_item'          => __( 'Add New Note', 'wp-plugin-template' ),
+            'add_new'               => __( 'Add Note', 'wp-plugin-template' ),
+            'new_item'              => __( 'New Note', 'wp-plugin-template' ),
+            'edit_item'             => __( 'Edit Note', 'wp-plugin-template' ),
+            'update_item'           => __( 'Update Note', 'wp-plugin-template' ),
+            'view_item'             => __( 'View Note', 'wp-plugin-template' ),
+            'view_items'            => __( 'View Notes', 'wp-plugin-template' ),
+            'search_items'          => __( 'Search Notes', 'wp-plugin-template' ),
+            'not_found'             => __( 'No Notes found', 'wp-plugin-template' ),
+            'not_found_in_trash'    => __( 'No Notes found in Trash', 'wp-plugin-template' ),
         );
 
         $args = array(
@@ -97,17 +73,17 @@ class Notes
                 'query_var'             => true,
                 'show_in_rest'          => true,
                 'labels' => array(
-                    'name'              => __( 'Categories', 'wpclear' ),
-                    'singular_name'     => __( 'Category', 'wpclear' ),
-                    'search_items'      => __( 'Search Categories', 'wpclear' ),
-                    'all_items'         => __( 'All Categories', 'wpclear' ),
-                    'parent_item'       => __( 'Parent Category', 'wpclear' ),
-                    'parent_item_colon' => __( 'Parent Category:', 'wpclear' ),
-                    'edit_item'         => __( 'Edit Category', 'wpclear' ),
-                    'update_item'       => __( 'Update Category', 'wpclear' ),
-                    'add_new_item'      => __( 'Add New Category', 'wpclear' ),
-                    'new_item_name'     => __( 'New Category Name', 'wpclear' ),
-                    'menu_name'         => __( 'Categories', 'wpclear' ),
+                    'name'              => __( 'Categories', 'wp-plugin-template' ),
+                    'singular_name'     => __( 'Category', 'wp-plugin-template' ),
+                    'search_items'      => __( 'Search Categories', 'wp-plugin-template' ),
+                    'all_items'         => __( 'All Categories', 'wp-plugin-template' ),
+                    'parent_item'       => __( 'Parent Category', 'wp-plugin-template' ),
+                    'parent_item_colon' => __( 'Parent Category:', 'wp-plugin-template' ),
+                    'edit_item'         => __( 'Edit Category', 'wp-plugin-template' ),
+                    'update_item'       => __( 'Update Category', 'wp-plugin-template' ),
+                    'add_new_item'      => __( 'Add New Category', 'wp-plugin-template' ),
+                    'new_item_name'     => __( 'New Category Name', 'wp-plugin-template' ),
+                    'menu_name'         => __( 'Categories', 'wp-plugin-template' ),
                 ),
                 'rewrite' => array(
                     'slug'              => 'notes_category',
@@ -127,7 +103,7 @@ class Notes
     {
         add_meta_box(
             'note_details',
-            __( 'Details', 'wpclear' ),
+            __( 'Details', 'wp-plugin-template' ),
             array( $this, 'note_details' ),
             'note',
             'normal',
@@ -148,7 +124,7 @@ class Notes
 
         $pinned = get_post_meta( $post->ID, 'pinned', true );
 
-        include( wpclear_plugin_path() . 'templates/metaboxes/note-details.php' );
+        include( wp_plugin_template_plugin_path() . 'templates/metaboxes/note-details.php' );
     }
 
     /**

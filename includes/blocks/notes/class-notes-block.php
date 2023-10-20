@@ -32,7 +32,7 @@ class Notes_Block
         }
 
         register_block_type(
-            'wpclear/notes',
+            'wp-plugin-template/notes',
             array(
                 'render_callback' => array( $this, 'render' ),
                 'attributes'      => array(
@@ -55,12 +55,26 @@ class Notes_Block
         
         $classes = isset( $attributes['className'] ) ? $attributes['className'] : '';
 
-        $notes = wpclear_all_notes();
+        $notes = wp_plugin_template_all_notes();
 
         // Turn on output buffering
     	ob_start(); 
 
-        include( wpclear_plugin_path() . 'includes/blocks/notes/notes.php' );
+        ?>
+
+        <div id="<?php echo $attributes['id']; ?>-wp-plugin-template-notes" class="wp-plugin-template-notes-block <?php echo $classes; ?>">
+            <div class="wp-plugin-template-notes-container">
+                <?php 
+                    foreach( $notes as $note ) :
+                ?>
+                <article class="note">
+                    <h2 class="title"><?php echo $note['title'] ?></h2>
+                </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <?php
     
         // Collect output
     	$output = ob_get_contents(); 

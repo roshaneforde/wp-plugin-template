@@ -11,10 +11,10 @@ import Note from './Note';
 /**
  * Register Block.
  */
-registerBlockType( 'wpclear/notes', {
+registerBlockType( 'wp-plugin-template/notes', {
 	title: 'Notes',
 	description: 'Display the list of notes.',
-	category: 'wpclear-blocks',
+	category: 'wp-plugin-template-blocks',
 	icon: 'media-text',
 	keywords: [
 		'notes',
@@ -47,10 +47,10 @@ registerBlockType( 'wpclear/notes', {
 		}
 
 		return (
-			<div className={ className + ' wp-block-wpclear-notes-block' } key='notes-block-view'>       
-				<div className="wpclear-notes-container">
+			<div className={ className + ' wp-plugin-template-notes-block' } key='notes-block-view'>       
+				<div className="wp-plugin-template-notes-container">
 					{
-						wpclear.notes.map( note => {
+						wp_plugin_template.notes.map( note => {
 							return (
 								<Note 
 									key={ note.id } 

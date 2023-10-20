@@ -10,15 +10,18 @@
  *
  */
 
-// Create a dist directory if it does not exist.
 const fs = require( 'fs' );
-
-const public_dir = 'dist';
-
 const archiver = require( 'archiver' );
 
-if ( ! fs.existsSync( public_dir ) && 'production' === process.env.NODE_ENV ) {
-    fs.mkdirSync( public_dir );
+const plugin_name = 'wp-plugin-template';
+
+// Create directories if they don't exist.
+if ( ! fs.existsSync( 'assets/min' ) ) {
+    fs.mkdirSync( 'assets/min' );
+}
+
+if ( ! fs.existsSync( 'dist' ) && 'production' === process.env.NODE_ENV ) {
+    fs.mkdirSync( 'dist' );
 }
 
 // Require laravel mix.
@@ -26,34 +29,34 @@ let mix = require( 'laravel-mix' );
 
 // Compile dev assets and copy fiiles.
 mix
-    .sass( 'assets/scss/wpclear.scss', 'assets/min/wpclear.min.css' )
-    .sass( 'assets/scss/wpclear-admin.scss', 'assets/min/wpclear-admin.min.css' )
-    .js( 'assets/js/wpclear.js', 'assets/min/wpclear.min.js' )
-    .js( 'assets/js/wpclear-admin.js', 'assets/min/wpclear-admin.min.js' )
+    .sass( 'assets/scss/frontend.scss', 'assets/min/frontend.min.css' )
+    .sass( 'assets/scss/admin.scss', 'assets/min/admin.min.css' )
+    .js( 'assets/js/frontend.js', 'assets/min/frontend.min.js' )
+    .js( 'assets/js/admin.js', 'assets/min/admin.min.js' )
     .disableNotifications()
     .options( { manifest: false } );
 
 // Copy theme or plugin files to dist directory.
 if ( 'production' === process.env.NODE_ENV ) {
     mix
-        .copyDirectory( 'assets/img', `${public_dir}/wpclear/assets/img` )
-        .copyDirectory( 'assets/min', `${public_dir}/wpclear/assets/min` )
-        .copyDirectory( 'includes', `${public_dir}/wpclear/includes` )
-        .copyDirectory( 'languages', `${public_dir}/wpclear/languages` )
-        .copyDirectory( 'templates', `${public_dir}/wpclear/templates` )
+        .copyDirectory( 'assets/img', `dist/${plugin_name}/assets/img` )
+        .copyDirectory( 'assets/min', `dist/${plugin_name}/assets/min` )
+        .copyDirectory( 'includes', `dist/${plugin_name}/includes` )
+        .copyDirectory( 'languages', `dist/${plugin_name}/languages` )
+        .copyDirectory( 'templates', `dist/${plugin_name}/templates` )
         .copy(
             [
                 'index.php',
                 'LICENSE.txt',
                 'readme.txt',
-                'wpclear.php',
+                `${plugin_name}.php`,
                 'uninstall.php',
             ],
-            `${public_dir}/wpclear`
+            `dist/${plugin_name}`
         )
         .then( () => {
             // create a folder to stream archive data to.
-            let output = fs.createWriteStream( `${public_dir}/wpclear-${process.env.npm_package_version}.zip` );
+            let output = fs.createWriteStream( `dist/${plugin_name}-${process.env.npm_package_version}.zip` );
             let archive = archiver( 'zip', {
                 zlib: { level: 9 } // Sets the compression level.
             } );
@@ -62,7 +65,7 @@ if ( 'production' === process.env.NODE_ENV ) {
             archive.pipe( output );
 
             // append files and putting its contents at the root of archive
-            archive.directory( `${public_dir}/wpclear/`, 'wpclear' );
+            archive.directory( `dist/${plugin_name}/`, `${plugin_name}` );
 
             // finalize the archive 
             archive.finalize();

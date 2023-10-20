@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-class WP_Clear
+class WP_Plugin_Template
 {
 	/**
 	 * Register and activate services.
@@ -17,9 +17,9 @@ class WP_Clear
 	{
 		add_filter( 'block_categories_all', array( $this, 'block_categories' ), 10, 2 );
 
-		require_once wpclear_plugin_path() . 'includes/config/class-enqueue.php';
-		require_once wpclear_plugin_path() . 'includes/custom-post-types/class-notes.php';
-		require_once wpclear_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
+		require_once wp_plugin_template_plugin_path() . 'includes/config/class-enqueue.php';
+		require_once wp_plugin_template_plugin_path() . 'includes/custom-post-types/class-notes.php';
+		require_once wp_plugin_template_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
 
 		new Enqueue();
 		new Notes();
@@ -35,12 +35,12 @@ class WP_Clear
 	{
         $category_slugs = wp_list_pluck( $categories, 'slug' );
         
-        return in_array( 'wpclear-blocks', $category_slugs, true ) ? $categories : array_merge(
+        return in_array( wp_plugin_template_plugin_name() . '-blocks', $category_slugs, true ) ? $categories : array_merge(
             $categories,
             array(
                 array(
-                    'slug'  => 'wpclear-blocks',
-                    'title' => __( 'WP Clear' )
+                    'slug'  => wp_plugin_template_plugin_name() . '-blocks',
+                    'title' => __( 'WP Plugin Template', 'wp-plugin-template' )
                 ),
             )
         );
