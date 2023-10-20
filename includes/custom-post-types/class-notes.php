@@ -169,3 +169,5 @@ class Notes
         }
     }
 }
+
+new Notes();

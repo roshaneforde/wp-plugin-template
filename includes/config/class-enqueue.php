@@ -80,3 +80,5 @@ class Enqueue
 		);
 	}
 }
+
+new Enqueue();

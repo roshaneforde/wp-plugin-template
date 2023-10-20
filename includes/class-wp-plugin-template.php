@@ -20,10 +20,6 @@ class WP_Plugin_Template
 		require_once wp_plugin_template_plugin_path() . 'includes/config/class-enqueue.php';
 		require_once wp_plugin_template_plugin_path() . 'includes/custom-post-types/class-notes.php';
 		require_once wp_plugin_template_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
-
-		new Enqueue();
-		new Notes();
-		new Notes_Block();
 	}
 
 	/**

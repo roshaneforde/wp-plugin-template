@@ -85,3 +85,5 @@ class Notes_Block
     	return $output;
     }
 }
+
+new Notes_Block();
