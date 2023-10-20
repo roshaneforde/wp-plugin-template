@@ -8,9 +8,9 @@ I made this plugin template as a starting point for creating WordPress plugins. 
 * All classes, functions, and variables are documented so that you know what you need to change.
 * Full text of the GPLv2 license.
 * Organized folder structure for your plugin assets, custom post types, metaboxes, admin pages, and Gutenberg blocks.
-* Sample custom post type `notes`.
-* Sample custom taxonomy `notes_category` for the `notes` the post type.
-* Sample Gutenberg block for dislaying `notes`.
+* Example custom post type `notes`.
+* Example custom taxonomy `notes_category` for the `notes` the post type.
+* Example Gutenberg block for dislaying `notes`.
 
 ## Installation
 
