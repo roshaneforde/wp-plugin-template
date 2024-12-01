@@ -129,6 +129,90 @@ function wpt_get_pages( $args )
 }
 
 /**
+ * Validate rest api requests
+ */
+function wpt_validate_rest_request( $request, $fields ) {
+	$errors = array();
+
+	foreach ( $fields as $field => $rules ) {
+		// If the field is required.
+		if ( isset( $rules['required'] ) && $rules['required'] && empty( $request->get_param( $field ) ) ) {
+			$errors[ $field ] = $rules['required'];
+		}
+
+		// Email.
+		if ( $field === 'email' ) {
+			// If not valid email.
+			if ( isset( $rules['email'] ) && ! empty( $request->get_param( $field ) ) && ! is_email( $request->get_param( $field ) ) ) {
+				$errors[ $field ] = $rules['email'];
+			}
+
+			// If email should be unique.
+			if ( isset( $rules['unique'] ) && ! empty( $request->get_param( $field ) ) && email_exists( $request->get_param( $field ) ) ) {
+				$user = cc_get_user_from_email( $request->get_param( $field ) );
+
+				// If the email is not the same as the user's email, add an error.
+				if ( $request->get_param( $field ) !== $user->user_email ) {
+					$errors[ $field ] = $rules['unique'];
+				}
+			}
+
+			// If email and it doesn't exist.
+			if ( isset( $rules['exists'] ) && ! empty( $request->get_param( $field ) ) && is_email( $request->get_param( $field ) ) && ! email_exists( $request->get_param( $field ) ) ) {
+				$errors[ $field ] = $rules['exists'];
+			}
+		}
+
+		// Password.
+		if ( $field === 'password' ) {
+			// If not valid password.
+			if ( isset( $rules['format'] ) && ! empty( $request->get_param( $field ) ) && ! preg_match( '/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%&]{6,20}$/', $request->get_param( $field ) ) ) {
+				$errors[ $field ] = $rules['format'];
+			}
+		}
+
+		// Password confirm.
+		if ( $field === 'password-confirm' ) {
+			// If the field doesn't match the password.
+			if ( isset( $rules['match'] ) && ! empty( $request->get_param( $field ) ) && $request->get_param( $field ) !== $request->get_param( $rules['match']['field'] ) ) {
+				$errors[ $field ] = $rules['match']['message'];
+			}
+		}
+	}
+
+	return $errors;
+}
+
+/**
+ * Get the blocks from a page.
+ */
+function wpt_get_page_blocks( $post_id, $block_name = '' ) {
+	$blocks = array();
+	$post = get_post( $post_id );
+
+	// If the post has blocks.
+	if ( has_blocks( $post->post_content ) ) {
+		$blocks = parse_blocks( $post->post_content );
+
+		// If we have a block name.
+		if ( $block_name ) {
+			$block = array();
+
+			foreach ( $blocks as $b ) {
+				if ( $b['blockName'] === $block_name ) {
+					$block = $b;
+					break;
+				}
+			}
+
+			$blocks = $block;
+		}
+	}
+
+	return $blocks;
+}
+
+/**
  * Get all notes.
  * 
  * @since 1.0.0

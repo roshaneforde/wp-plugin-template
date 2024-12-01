@@ -25,6 +25,9 @@ class WP_Plugin_Template
 
 		// Register custom blocks.
 		require_once wpt_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
+
+		// Register custom admin page.
+		require_once wpt_plugin_path() . 'includes/class-admin-page.php';
 	}
 
 	/**
