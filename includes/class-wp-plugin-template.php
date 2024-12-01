@@ -17,9 +17,14 @@ class WP_Plugin_Template
 	{
 		add_filter( 'block_categories_all', array( $this, 'block_categories' ), 10, 2 );
 
-		require_once wp_plugin_template_plugin_path() . 'includes/config/class-enqueue.php';
-		require_once wp_plugin_template_plugin_path() . 'includes/custom-post-types/class-notes.php';
-		require_once wp_plugin_template_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
+		// Enqueue scripts and styles.
+		require_once wpt_plugin_path() . 'includes/config/class-wpt-enqueue.php';
+
+		// Register custom post types.
+		require_once wpt_plugin_path() . 'includes/custom-post-types/class-notes.php';
+
+		// Register custom blocks.
+		require_once wpt_plugin_path() . 'includes/blocks/notes/class-notes-block.php';
 	}
 
 	/**
@@ -31,14 +36,16 @@ class WP_Plugin_Template
 	{
         $category_slugs = wp_list_pluck( $categories, 'slug' );
         
-        return in_array( wp_plugin_template_plugin_name() . '-blocks', $category_slugs, true ) ? $categories : array_merge(
+        return in_array( wpt_plugin_prefix() . '-blocks', $category_slugs, true ) ? $categories : array_merge(
             $categories,
             array(
                 array(
-                    'slug'  => wp_plugin_template_plugin_name() . '-blocks',
+                    'slug'  => wpt_plugin_prefix() . '-blocks',
                     'title' => __( 'WP Plugin Template', 'wp-plugin-template' )
                 ),
             )
         );
 	}
 }
+
+new WP_Plugin_Template();

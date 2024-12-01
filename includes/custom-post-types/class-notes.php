@@ -124,7 +124,7 @@ class Notes
 
         $pinned = get_post_meta( $post->ID, 'pinned', true );
 
-        include( wp_plugin_template_plugin_path() . 'templates/metaboxes/note-details.php' );
+        include( wpt_plugin_path() . 'includes/templates/metaboxes/note-details.php' );
     }
 
     /**

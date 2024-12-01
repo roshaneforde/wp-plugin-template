@@ -14,6 +14,7 @@ const fs = require( 'fs' );
 const archiver = require( 'archiver' );
 
 const plugin_name = 'wp-plugin-template';
+const plugin_prefix = 'wpt';
 
 // Create directories if they don't exist.
 if ( ! fs.existsSync( 'assets/min' ) ) {
@@ -29,10 +30,11 @@ let mix = require( 'laravel-mix' );
 
 // Compile dev assets and copy fiiles.
 mix
-    .sass( 'assets/scss/frontend.scss', 'assets/min/frontend.min.css' )
-    .sass( 'assets/scss/admin.scss', 'assets/min/admin.min.css' )
-    .js( 'assets/js/frontend.js', 'assets/min/frontend.min.js' )
-    .js( 'assets/js/admin.js', 'assets/min/admin.min.js' )
+    .sass( 'assets/scss/frontend.scss', `assets/min/${plugin_prefix}-frontend.min.css` )
+    .sass( 'assets/scss/admin.scss', `assets/min/${plugin_prefix}-admin.min.css` )
+    .js( 'assets/js/frontend.js', `assets/min/${plugin_prefix}-frontend.min.js` )
+    .js( 'assets/js/admin.js', `assets/min/${plugin_prefix}-admin.min.js` )
+    .js( 'assets/js/blocks.js', `assets/min/${plugin_prefix}-blocks.min.js` )
     .disableNotifications()
     .options( { manifest: false } );
 
@@ -43,7 +45,6 @@ if ( 'production' === process.env.NODE_ENV ) {
         .copyDirectory( 'assets/min', `dist/${plugin_name}/assets/min` )
         .copyDirectory( 'includes', `dist/${plugin_name}/includes` )
         .copyDirectory( 'languages', `dist/${plugin_name}/languages` )
-        .copyDirectory( 'templates', `dist/${plugin_name}/templates` )
         .copy(
             [
                 'index.php',

@@ -13,9 +13,20 @@
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_plugin_name()
+function wpt_plugin_name()
 {
-    return 'wp-plugin-template';
+    return WP_PLUGIN_TEMPLATE_NAME;
+}
+
+/**
+ * Retrieve the prefix of the plugin.
+ * 
+ * @since 1.0.0
+ * @return string
+ */
+function wpt_plugin_prefix()
+{
+    return WP_PLUGIN_TEMPLATE_PREFIX;
 }
 
 /**
@@ -24,7 +35,7 @@ function wp_plugin_template_plugin_name()
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_plugin_version()
+function wpt_plugin_version()
 {
     return WP_PLUGIN_TEMPLATE_VERSION;
 }
@@ -35,7 +46,7 @@ function wp_plugin_template_plugin_version()
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_plugin_url()
+function wpt_plugin_url()
 {
     return WP_PLUGIN_TEMPLATE_URL;
 }
@@ -46,7 +57,7 @@ function wp_plugin_template_plugin_url()
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_plugin_path()
+function wpt_plugin_path()
 {
     return WP_PLUGIN_TEMPLATE_PATH;
 }
@@ -57,9 +68,9 @@ function wp_plugin_template_plugin_path()
  * @since 1.0.0
  * @return string
  */
-function wp_plugin_template_default_avatar_image()
+function wpt_default_avatar_image()
 {
-    return wp_plugin_template_plugin_url() . 'img/default-avatar.png';
+    return wpt_plugin_url() . 'img/default-avatar.png';
 }
 
 /**
@@ -68,7 +79,7 @@ function wp_plugin_template_default_avatar_image()
  * @since 1.0.0
  * @param string $url
  */
-function wp_plugin_template_add_url_protocol( $url )
+function wpt_add_url_protocol( $url )
 {
     if ( strpos( $url, 'http' ) === false || strpos( $url, 'https'  === false ) ) {
         $url = 'http://' .$url;
@@ -83,7 +94,7 @@ function wp_plugin_template_add_url_protocol( $url )
  * @since 1.0.0
  * @return void
  */
-function wp_plugin_template_show_404()
+function wpt_template_show_404()
 {
     global $wp_query;
 
@@ -104,7 +115,7 @@ function wp_plugin_template_show_404()
  * @since 1.0.0
  * @param array $args
  */
-function wp_plugin_template_get_pages( $args )
+function wpt_get_pages( $args )
 {
     $pages = array();
 
@@ -123,7 +134,7 @@ function wp_plugin_template_get_pages( $args )
  * @since 1.0.0
  * @return array $notes_data
  */
-function wp_plugin_template_all_notes()
+function wpt_all_notes()
 {
     $notes = get_posts( array(
         'posts_per_page'    => -1,

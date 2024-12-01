@@ -11,10 +11,10 @@ import Note from './Note';
 /**
  * Register Block.
  */
-registerBlockType( 'wp-plugin-template/notes', {
+registerBlockType( 'wpt/notes', {
 	title: 'Notes',
 	description: 'Display the list of notes.',
-	category: 'wp-plugin-template-blocks',
+	category: 'wpt-blocks',
 	icon: 'media-text',
 	keywords: [
 		'notes',
@@ -47,8 +47,8 @@ registerBlockType( 'wp-plugin-template/notes', {
 		}
 
 		return (
-			<div className={ className + ' wp-plugin-template-notes-block' } key='notes-block-view'>       
-				<div className="wp-plugin-template-notes-container">
+			<div className={ className + ' wpt-notes-block' } key='notes-block-view'>       
+				<div className="wpt-notes-container">
 					{
 						wp_plugin_template.notes.map( note => {
 							return (

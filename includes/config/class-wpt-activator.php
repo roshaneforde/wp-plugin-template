@@ -8,7 +8,7 @@
  * @since 1.0.0
  */
 
-class Activator
+class WPT_Activator
 {
 	/**
 	 * Description.

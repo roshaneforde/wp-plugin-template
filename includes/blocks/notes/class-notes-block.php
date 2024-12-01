@@ -32,7 +32,7 @@ class Notes_Block
         }
 
         register_block_type(
-            'wp-plugin-template/notes',
+            'wpt/notes',
             array(
                 'render_callback' => array( $this, 'render' ),
                 'attributes'      => array(
@@ -55,15 +55,15 @@ class Notes_Block
         
         $classes = isset( $attributes['className'] ) ? $attributes['className'] : '';
 
-        $notes = wp_plugin_template_all_notes();
+        $notes = wpt_all_notes();
 
         // Turn on output buffering
     	ob_start(); 
 
         ?>
 
-        <div id="<?php echo $attributes['id']; ?>-wp-plugin-template-notes" class="wp-plugin-template-notes-block <?php echo $classes; ?>">
-            <div class="wp-plugin-template-notes-container">
+        <div id="<?php echo $attributes['id']; ?>-wpt-notes" class="wpt-notes-block <?php echo $classes; ?>">
+            <div class="wpt-notes-container">
                 <?php 
                     foreach( $notes as $note ) :
                 ?>

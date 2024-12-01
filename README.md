@@ -20,6 +20,7 @@ The Template can be installed directly into your plugins folder, where you can r
 
 1. Run `npm install` and `npm run dev or watch` to make changes.
 2. Run `npm run production` to remove dev files, minify assets and copy plugin-required files to the dist folder.
+3. Replace every instance of `WP_PLUGIN_TEMPLATE`, `wp-plugin-template`, `wpt`, and `WPT` with your plugin's name and prefix, including the folder name, main plugin file, classes, and functions.
 
 <br />
 
