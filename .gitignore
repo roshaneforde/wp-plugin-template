@@ -1,3 +1,9 @@
+# Track these folders and files
+!includes/api/
+!includes/templates/emails/
+!includes/templates/pages/
+
+# Ignore everything
 .DS_Store
 node_modules/
 dist/
